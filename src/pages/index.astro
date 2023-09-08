@@ -16,7 +16,7 @@ const bags = bagsData.map((bag, index) => {
     {
       bags.map(({ image, price }, index) => (
         <li>
-          <a href={`/bags/${index + 1}`}>
+          <a href={`/bags/${index}`}>
             <Image src={image} alt={`image-${index}`} width={300} />
             <p>{price}円</p>
           </a>

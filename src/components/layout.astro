@@ -13,19 +13,19 @@
   <body>
     <header>🤗</header>
     <slot />
+    <style>
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        border-bottom: 1px solid gray;
+        font-size: 30px;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
   </body>
 </html>
-<style>
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    border-bottom: 1px solid gray;
-    font-size: 30px;
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-  }
-</style>

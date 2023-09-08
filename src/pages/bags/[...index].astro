@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const paths = bagsData.map(({ price }, index) => {
     return {
       params: {
-        index: index + 1,
+        index: index,
       },
       props: {
         image: images[index].default,
