@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../components/layout.astro";
+import bagsData from "../bags.json";
+const rawImages = await Astro.glob("../images/*");
+const bags = bagsData.map((bag, index) => {
+  return {
+    image: rawImages[index].default,
+    price: bag.price,
+  };
+});
+---
+
+<Layout>
+  <ul>
+    {
+      bags.map(({ image, price }, index) => (
+        <li>
+          <a href={`/bags/${index + 1}`}>
+            <Image src={image} alt={`image-${index}`} width={300} />
+            <p>{price}円</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    padding: 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  li {
+    list-style: none;
+    margin: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  p {
+    margin: 0;
+  }
+  img {
+    border-radius: 10px;
+  }
+</style>

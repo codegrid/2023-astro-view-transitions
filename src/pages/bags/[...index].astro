@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../components/layout.astro";
+import bagsData from "../../bags.json";
+
+export async function getStaticPaths() {
+  const images = await Astro.glob("../../images/*");
+  const paths = bagsData.map(({ price }, index) => {
+    return {
+      params: {
+        index: index,
+      },
+      props: {
+        image: images[index].default,
+        price,
+      },
+    };
+  });
+  return paths;
+}
+const { image, price } = Astro.props;
+const { index } = Astro.params;
+---
+
+<Layout>
+  <div>
+    <Image src={image} alt={`${index}枚目の鞄の画像`} width={500} />
+    <p>{price}円</p>
+  </div>
+</Layout>
+
+<style>
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 50px);
+  }
+</style>
